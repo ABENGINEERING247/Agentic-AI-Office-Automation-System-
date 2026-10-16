@@ -176,9 +176,7 @@ with tabs[1]:
             st.success(f"File uploaded successfully: {uploaded_inst_file.name}")
             if uploaded_inst_file.name.endswith(".txt"):
                 prompt_text = str(uploaded_inst_file.read(), "utf-8")
-                st.info(f"Extracted Text from {uploaded_inst_file.name}:
-
-{prompt_text[:300]}...")
+                st.info(f"Extracted Text from {uploaded_inst_file.name}:\n\n{prompt_text[:300]}...")
             else:
                 prompt_text = f"Process instructions provided in attached document: {uploaded_inst_file.name}"
                 st.info("Document queued for agent analysis.")
