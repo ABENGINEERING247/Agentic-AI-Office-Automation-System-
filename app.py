@@ -122,7 +122,7 @@ with tabs[0]:
         execution_results = []
         
         for idx, step in enumerate(steps):
-            status_holder.info(f"Step {idx+1}/{len(steps)} | Active Agent: **{step['agent']}** | Task: {step['task']}")
+            status_holder.info(f"Step {idx+1}/{len(steps)} | Active Agent: {step['agent']} | Task: {step['task']}")
             res = execute_agent_task(step['agent'], step['task'], st.session_state.mode, st.session_state.api_key, model_choice="gpt-6-luna")
             execution_results.append({"step": idx+1, "agent": step['agent'], "output": res})
             
