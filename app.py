@@ -11,7 +11,7 @@ from orchestrator_500 import MasterOrchestrator
 
 st.set_page_config(
     page_title="Agentic AI Office Automation System - GPT-6 Luna Edition",
-    page_icon="🚀",
+    page_icon="ðŸš€",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -34,7 +34,7 @@ st.markdown("""
 
 st.markdown("""
 <div class="hero-header">
-    <div class="hero-title">🚀 Agentic AI Office Automation System</div>
+    <div class="hero-title">ðŸš€ Agentic AI Office Automation System</div>
     <div class="hero-subtitle">GPT-6 Luna Enterprise Edition | 500 Specialized Autonomous Agents | Temperature 1.0 | Multi-Modal Ingestion & PDF/DOCX Studio</div>
 </div>
 """, unsafe_allow_html=True)
@@ -52,12 +52,12 @@ if 'approval_queue' not in st.session_state:
             'agent': 'Global Executive Communications Director (Agent #1)',
             'recipient': 'board@enterprise-global.com',
             'subject': 'GPT-6 Luna Integration & Autonomous Operations Report',
-            'body': 'Dear Board Members,
+            'body': """Dear Board Members,
 
 All 500 specialized agents have been successfully upgraded to leverage GPT-6 Luna at temperature 1.0...
 
 Sincerely,
-AI Executive Office',
+AI Executive Office""",
             'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
     ]
@@ -71,7 +71,7 @@ with st.sidebar:
     if st.session_state.mode == "API Mode (GPT-6 Luna)":
         st.session_state.api_key = st.text_input("OpenAI API Key", type="password", value=st.session_state.api_key)
         if not st.session_state.api_key:
-            st.warning("⚠️ Please input OpenAI API key.")
+            st.warning("âš ï¸ Please input OpenAI API key.")
         else:
             st.success("API Key Configured")
     else:
@@ -79,25 +79,25 @@ with st.sidebar:
         st.info("Simulating high-speed enterprise intelligence with synthetic multi-agent responses.")
         
     st.markdown("---")
-    st.subheader("⚙️ Model Parameters")
+    st.subheader("âš™ï¸ Model Parameters")
     st.write("**Model:** `gpt-6-luna`")
     st.write("**Temperature:** `1.0`")
     st.write("**Reasoning Effort:** `medium`")
     
     st.markdown("---")
-    st.subheader("📊 System Metrics")
+    st.subheader("ðŸ“Š System Metrics")
     st.metric("Total Specialized Agents", "500")
     st.metric("Global Departments", "10")
     st.metric("Pending Approvals", len(st.session_state.approval_queue))
     st.metric("Audit Log Entries", len(st.session_state.audit_logs))
 
 tabs = st.tabs([
-    "🏛️ Master Orchestrator (500 Agents)", 
-    "🤖 Agent Directory & File Ingestion", 
-    "📄 PDF & DOCX Generator Studio", 
-    "📊 Excel & Data Analytics AI", 
-    "📧 Email Generator & Approval Queue", 
-    "📜 Audit Logs & Telemetry"
+    "ðŸ›ï¸ Master Orchestrator (500 Agents)", 
+    "ðŸ¤– Agent Directory & File Ingestion", 
+    "ðŸ“„ PDF & DOCX Generator Studio", 
+    "ðŸ“Š Excel & Data Analytics AI", 
+    "ðŸ“§ Email Generator & Approval Queue", 
+    "ðŸ“œ Audit Logs & Telemetry"
 ])
 
 with tabs[0]:
@@ -110,7 +110,7 @@ with tabs[0]:
                                   value="Perform a complete Q4 multi-departmental audit across finance, legal compliance, cyber security, and generate an executive PDF report with automated email dispatch.")
     with col_o2:
         st.markdown("<br>", unsafe_allow_html=True)
-        execute_btn = st.button("🚀 Execute 500-Agent Mesh", use_container_width=True)
+        execute_btn = st.button("ðŸš€ Execute 500-Agent Mesh", use_container_width=True)
         
     if execute_btn and goal_input:
         orchestrator = MasterOrchestrator(mode=st.session_state.mode, api_key=st.session_state.api_key)
@@ -136,9 +136,9 @@ with tabs[0]:
             progress.progress((idx + 1) / len(steps))
             time.sleep(0.4)
             
-        status_holder.success("✅ Master Orchestration Completed Successfully!")
+        status_holder.success("âœ… Master Orchestration Completed Successfully!")
         
-        st.markdown("### 📋 Orchestration Execution Report")
+        st.markdown("### ðŸ“‹ Orchestration Execution Report")
         for r in execution_results:
             with st.expander(f"Phase {r['step']}: {r['agent']}"):
                 st.write(r['output'])
@@ -163,7 +163,7 @@ with tabs[1]:
         st.markdown(f"**Expertise:** {agent_data['role']}")
         
     st.markdown("---")
-    st.markdown("### 📂 Multi-Modal Instruction Ingestion")
+    st.markdown("### ðŸ“‚ Multi-Modal Instruction Ingestion")
     ingest_tab1, ingest_tab2 = st.tabs(["Direct Text / Notepad (.txt)", "Upload PDF / DOCX Instruction File"])
     
     prompt_text = ""
@@ -183,11 +183,11 @@ with tabs[1]:
                 prompt_text = f"Process instructions provided in attached document: {uploaded_inst_file.name}"
                 st.info("Document queued for agent analysis.")
 
-    if st.button("🚀 Dispatch Task to Agent"):
+    if st.button("ðŸš€ Dispatch Task to Agent"):
         if prompt_text:
             with st.spinner(f"Agent {selected_agent} processing instructions via GPT-6 Luna..."):
                 output = execute_agent_task(selected_agent, prompt_text, st.session_state.mode, st.session_state.api_key, model_choice="gpt-6-luna")
-                st.markdown("### 💡 Agent Execution Output")
+                st.markdown("### ðŸ’¡ Agent Execution Output")
                 st.success(output)
                 
                 st.session_state.audit_logs.append({
@@ -213,11 +213,11 @@ with tabs[2]:
         
     doc_content_prompt = st.text_area("Detailed Requirements & Key Sections", "Include comprehensive metrics, risk analysis, resource allocation, and timeline milestones.")
     
-    if st.button("✨ Generate Document"):
+    if st.button("âœ¨ Generate Document"):
         with st.spinner("Generating document via GPT-6 Luna..."):
             generated_body = execute_agent_task(author_agent, f"Generate a formal {doc_category} titled '{doc_title}' based on: {doc_content_prompt}", st.session_state.mode, st.session_state.api_key, model_choice="gpt-6-luna")
             
-            st.markdown("### 📄 Document Preview")
+            st.markdown("### ðŸ“„ Document Preview")
             st.markdown(f"---")
             st.markdown(f"# {doc_title}")
             st.markdown(f"**Author:** {author_agent} | **Model:** GPT-6 Luna (Temp 1.0) | **Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
@@ -228,7 +228,7 @@ with tabs[2]:
             file_buffer = io.BytesIO(generated_body.encode('utf-8'))
             ext = doc_format.lower().replace('.', '')
             st.download_button(
-                label=f"📥 Download Document ({doc_format})",
+                label=f"ðŸ“¥ Download Document ({doc_format})",
                 data=file_buffer,
                 file_name=f"{doc_title.lower().replace(' ', '_')}.{ext}",
                 mime="text/plain"
@@ -256,17 +256,17 @@ with tabs[3]:
                 fig = px.area(df, x=x_col, y=y_col, title=f"Trend Analysis: {y_col} vs {x_col}")
                 st.plotly_chart(fig, use_container_width=True)
                 
-        if st.button("🤖 Run 500-Agent Data Audit"):
+        if st.button("ðŸ¤– Run 500-Agent Data Audit"):
             summary_str = f"Columns: {list(df.columns)}, Shape: {df.shape}, Summary: {df.describe().to_string()}"
             analysis = execute_agent_task("Data Science Lead (Agent #401)", f"Perform an exhaustive statistical audit and anomaly detection on this dataset: {summary_str}", st.session_state.mode, st.session_state.api_key, model_choice="gpt-6-luna")
-            st.markdown("### 📊 AI Analytics Audit Report")
+            st.markdown("### ðŸ“Š AI Analytics Audit Report")
             st.success(analysis)
 
 with tabs[4]:
     st.subheader("Email Generator & Human-in-the-Loop Approval Queue")
     st.write("Review, edit, and approve agent-generated external communications and automated email campaigns before dispatch.")
     
-    with st.expander("✉️ Draft New Email via Agent"):
+    with st.expander("âœ‰ï¸ Draft New Email via Agent"):
         email_agent = st.selectbox("Select Email Generator Agent", list(AGENT_REGISTRY.keys())[100:150])
         email_recipient = st.text_input("Recipient Email", "client@globalpartner.com")
         email_prompt = st.text_input("Email Objective / Prompt", "Draft a professional follow-up regarding our enterprise software proposal.")
@@ -284,12 +284,12 @@ with tabs[4]:
             st.success(f"Email successfully generated and added to Approval Queue ({new_id})!")
             st.rerun()
 
-    st.markdown("### 📥 Pending Approval Queue")
+    st.markdown("### ðŸ“¥ Pending Approval Queue")
     if not st.session_state.approval_queue:
         st.success("All items approved. No pending emails in queue.")
     else:
         for idx, item in enumerate(st.session_state.approval_queue):
-            with st.expander(f"📌 [{item['id']}] To: {item['recipient']} | Agent: {item['agent']}", expanded=True):
+            with st.expander(f"ðŸ“Œ [{item['id']}] To: {item['recipient']} | Agent: {item['agent']}", expanded=True):
                 col_e1, col_e2 = st.columns([3, 1])
                 with col_e1:
                     recip = st.text_input(f"Recipient ({item['id']})", value=item['recipient'], key=f"rec_{idx}")
@@ -297,7 +297,7 @@ with tabs[4]:
                     body = st.text_area(f"Body ({item['id']})", value=item['body'], height=160, key=f"body_{idx}")
                 with col_e2:
                     st.write("**Action Center**")
-                    if st.button("✅ Approve & Send", key=f"app_{idx}", use_container_width=True):
+                    if st.button("âœ… Approve & Send", key=f"app_{idx}", use_container_width=True):
                         sent_item = st.session_state.approval_queue.pop(idx)
                         st.session_state.audit_logs.append({
                             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -307,7 +307,7 @@ with tabs[4]:
                         })
                         st.success(f"Email {sent_item['id']} successfully sent!")
                         st.rerun()
-                    if st.button("❌ Reject", key=f"rej_{idx}", use_container_width=True):
+                    if st.button("âŒ Reject", key=f"rej_{idx}", use_container_width=True):
                         st.session_state.approval_queue.pop(idx)
                         st.warning(f"Email {item['id']} rejected.")
                         st.rerun()
@@ -319,6 +319,6 @@ with tabs[5]:
         st.dataframe(audit_df, use_container_width=True)
         
         csv_data = audit_df.to_csv(index=False).encode('utf-8')
-        st.download_button("📥 Export Audit Logs (CSV)", csv_data, file_name="enterprise_audit_logs.csv", mime="text/csv")
+        st.download_button("ðŸ“¥ Export Audit Logs (CSV)", csv_data, file_name="enterprise_audit_logs.csv", mime="text/csv")
     else:
         st.info("No audit logs recorded yet in this session.")
